@@ -17,6 +17,8 @@ return {
         -- install formatters
         "stylua",
         "pint",
+        "phpstan",
+        "biome",
 
         -- install debuggers
         "debugpy",

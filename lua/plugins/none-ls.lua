@@ -15,9 +15,27 @@ return {
     -- (If you wish to replace, use `opts.sources = {}` instead of the `list_insert_unique` function)
     opts.sources = require("astrocore").list_insert_unique(opts.sources, {
       -- Set a formatter
-      null_ls.builtins.formatting.stylua,
-      null_ls.builtins.formatting.pint,
-      null_ls.builtins.formatting.prettier,
+      -- Formatter
+      null_ls.builtins.formatting.stylua.with {
+        filetypes = { "lua" },
+      },
+      -- null_ls.builtins.formatting.prettier.with {
+      --   filetypes = { "javascript", "typescript", "json", "ts", "js", "jsx", "tsx" },
+      -- },
+      null_ls.builtins.formatting.biome.with {
+        filetypes = { "javascript", "typescript", "json", "ts", "js", "jsx", "tsx" },
+      },
+
+      null_ls.builtins.formatting.phpcsfixer.with {
+        filetypes = { "php" },
+        command = "pint", -- dùng pint thay vì phpcsfixer
+        args = { "--quiet", "--" }, -- args cho pint
+      },
+
+      -- Diagnostics
+      null_ls.builtins.diagnostics.phpstan.with {
+        filetypes = { "php" },
+      },
     })
   end,
 }
