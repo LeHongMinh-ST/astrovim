@@ -28,8 +28,8 @@ return {
 
       null_ls.builtins.formatting.phpcsfixer.with {
         filetypes = { "php" },
-        command = "pint", -- dùng pint thay vì phpcsfixer
-        args = { "--quiet", "--" }, -- args cho pint
+        -- command = "pint", -- dùng pint thay vì phpcsfixer
+        -- args = { "--quiet", "--" }, -- args cho pint
       },
 
       -- Diagnostics

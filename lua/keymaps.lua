@@ -1,5 +1,5 @@
 local keymaps = vim.keymap
-local otps = { noremap = true, silent = true }
+local opts = { noremap = true, silent = true }
 
 keymaps.set({ "n", "i", "x", "s" }, "<C-s>", "<cmd>w<cr><esc>", { silent = true, desc = "Save File" })
 
@@ -9,10 +9,9 @@ keymaps.set("n", "dw", "vb_d")
 -- SelectAll
 keymaps.set("n", "<C-a>", "gg<S-v>G")
 
-
 -- Split window
-keymaps.set("n", "ss", ":split<Return>", otps)
-keymaps.set("n", "sv", ":vsplit<Return>", otps)
+keymaps.set("n", "ss", ":split<Return>", opts)
+keymaps.set("n", "sv", ":vsplit<Return>", opts)
 
 -- Buffer navigation
 keymaps.set("n", "<S-h>", ":bprevious<CR>", opts)
