@@ -21,7 +21,7 @@ return {
         "biome",
 
         -- install debuggers
-        "debugpy",
+        -- "debugpy",
 
         -- install any other package
         "tree-sitter-cli",
