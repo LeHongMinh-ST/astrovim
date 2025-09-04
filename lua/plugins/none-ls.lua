@@ -26,16 +26,16 @@ return {
         filetypes = { "javascript", "typescript", "json", "ts", "js", "jsx", "tsx" },
       },
 
-      null_ls.builtins.formatting.phpcsfixer.with {
-        filetypes = { "php" },
-        -- command = "pint", -- dùng pint thay vì phpcsfixer
-        -- args = { "--quiet", "--" }, -- args cho pint
-      },
+      -- null_ls.builtins.formatting.phpcsfixer.with {
+      --   filetypes = { "php" },
+      --   -- command = "pint", -- dùng pint thay vì phpcsfixer
+      --   -- args = { "--quiet", "--" }, -- args cho pint
+      -- },
 
       -- Diagnostics
-      null_ls.builtins.diagnostics.phpstan.with {
-        filetypes = { "php" },
-      },
+      -- null_ls.builtins.diagnostics.phpstan.with {
+      --   filetypes = { "php" },
+      -- },
     })
   end,
 }
