@@ -13,6 +13,7 @@ return {
         "lua-language-server",
         "intelephense",
         "vtsls",
+        "jdtls",
 
         -- install formatters
         "stylua",

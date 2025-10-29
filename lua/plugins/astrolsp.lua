@@ -22,6 +22,7 @@ return {
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
           "lua",
+          "java",
           "php",
           "ts",
           "js",
@@ -52,6 +53,25 @@ return {
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      --- biome
+      biome = {
+        root_dir = function(fname)
+          local util = require "lspconfig.util"
+
+          return util.root_pattern("biome.json", "biome.jsonc")(fname)
+        end,
+        single_file_support = false,
+      },
+      --- eslint
+      eslint = {
+        root_dir = function(fname)
+          local util = require "lspconfig.util"
+          return util.root_pattern(".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json")(fname)
+        end,
+        settings = {
+          workingDirectory = { mode = "auto" },
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {
@@ -61,6 +81,20 @@ return {
       -- the key is the server that is being setup with `lspconfig`
       -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
       -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
+      biome = function(_, opts)
+        if vim.fn.filereadable "biome.json" == 1 or vim.fn.filereadable "biome.jsonc" == 1 then
+          require("lspconfig").biome.setup(opts)
+        end
+      end,
+      eslint = function(_, opts)
+        if
+          vim.fn.filereadable ".eslintrc.js" == 1
+          or vim.fn.filereadable ".eslintrc.cjs" == 1
+          or vim.fn.filereadable ".eslintrc.json" == 1
+        then
+          require("lspconfig").eslint.setup(opts)
+        end
+      end,
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {

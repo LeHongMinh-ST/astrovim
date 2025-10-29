@@ -16,11 +16,20 @@ return {
       null_ls.builtins.formatting.stylua.with {
         filetypes = { "lua" },
       },
-      -- null_ls.builtins.formatting.prettier.with {
-      --   filetypes = { "javascript", "typescript", "json", "ts", "js", "jsx", "tsx" },
-      -- },
+      -- ✅ Prettier (đọc .prettierrc)
+      null_ls.builtins.formatting.prettierd.with {
+        filetypes = { "javascript", "typescript", "json", "jsx", "tsx" },
+        condition = function(utils)
+          return utils.root_has_file ".prettierrc"
+            or utils.root_has_file ".prettierrc.json"
+            or utils.root_has_file "prettier.config.js"
+        end,
+      },
+
+      -- ✅ Biome (chỉ dùng nếu có biome.json)
       null_ls.builtins.formatting.biome.with {
-        filetypes = { "javascript", "typescript", "json", "ts", "js", "jsx", "tsx" },
+        filetypes = { "javascript", "typescript", "json", "jsx", "tsx" },
+        condition = function(utils) return utils.root_has_file "biome.json" or utils.root_has_file "biome.jsonc" end,
       },
 
       -- null_ls.builtins.formatting.phpcsfixer.with {
