@@ -8,6 +8,7 @@ return {
   { import = "astrocommunity.pack.lua" },
   -- { import = "astrocommunity.colorscheme.dracula-dark" },
   { import = "astrocommunity.recipes.ai" },
+  -- { import = "astrocommunity.recipes.vscode" },
   -- { import = "astrocommunity.pack.typescript" },
   -- import/override with your plugins folder
 }

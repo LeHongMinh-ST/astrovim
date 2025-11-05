@@ -2,6 +2,7 @@
 -- This is just pure lua so anything that doesn't
 -- fit in the normal config locations above can go here
 
+require("themes.jetbrains-new-dark").setup()
 if vim.loop.os_uname().sysname == "Linux" then
   local ibus_prev_engine = nil
 
