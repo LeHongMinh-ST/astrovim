@@ -26,4 +26,15 @@ return {
       }
     end,
   },
+  {
+    "jetbrains-new-dark.nvim",
+    dir = "~/.config/nvim/lua/themes",
+    name = "jetbrains-new-dark",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    lazy = false,
+    priority = 1000,
+    config = function() require("themes.jetbrains-new-dark").setup() end,
+  },
 }
