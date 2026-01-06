@@ -16,6 +16,34 @@ end, { noremap = true, silent = true, desc = "Copy error at cursor" })
 vim.keymap.set("n", "<leader>ne", vim.diagnostic.goto_next, { desc = "Go to next error" })
 vim.keymap.set("n", "<leader>pe", vim.diagnostic.goto_prev, { desc = "Go to previous error" })
 
+-- Check if current project is Spring Boot
+local function is_spring_project()
+  local gradle_files = { "build.gradle", "build.gradle.kts" }
+
+  for _, file in ipairs(gradle_files) do
+    if vim.fn.filereadable(file) == 1 then
+      local lines = vim.fn.readfile(file)
+      for _, line in ipairs(lines) do
+        if line:match "org%.springframework%.boot" then return true end
+      end
+    end
+  end
+
+  return false
+end
+local function has_gradlew() return vim.fn.filereadable "gradlew" == 1 end
+
+if is_spring_project() and has_gradlew() then
+  vim.keymap.set("n", "<leader>gb", function() vim.cmd "!./gradlew build" end, { desc = "Spring Gradle Build" })
+
+  vim.keymap.set(
+    "n",
+    "<leader>gB",
+    function() vim.cmd "!./gradlew clean build" end,
+    { desc = "Spring Gradle Clean Build" }
+  )
+end
+
 -- -- set language based on vim mode
 -- -- requires im-select https://github.com/daipeihust/im-select
 -- -- recommend installing it by brew
