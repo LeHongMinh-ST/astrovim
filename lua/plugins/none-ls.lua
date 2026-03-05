@@ -31,28 +31,7 @@ return {
         filetypes = { "javascript", "typescript", "json", "jsx", "tsx" },
         condition = function(utils) return utils.root_has_file "biome.json" or utils.root_has_file "biome.jsonc" end,
       },
-
-      -- ✅ Ruff formatter for Python (fast and modern)
-      null_ls.builtins.formatting.ruff.with {
-        filetypes = { "python" },
-        extra_args = { "--line-length=88" }, -- Black-compatible line length
-      },
-
-      -- ✅ Ruff linter for Python diagnostics
-      null_ls.builtins.diagnostics.ruff.with {
-        filetypes = { "python" },
-      },
-
-      -- null_ls.builtins.formatting.phpcsfixer.with {
-      --   filetypes = { "php" },
-      --   -- command = "pint", -- dùng pint thay vì phpcsfixer
-      --   -- args = { "--quiet", "--" }, -- args cho pint
-      -- },
-
-      -- Diagnostics
-      -- null_ls.builtins.diagnostics.phpstan.with {
-      --   filetypes = { "php" },
-      -- },
+      null_ls.builtins.formatting.black,
     })
   end,
 }
