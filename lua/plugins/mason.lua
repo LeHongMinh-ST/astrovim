@@ -14,15 +14,17 @@ return {
         "intelephense",
         "vtsls",
         "jdtls",
+        "ruff-lsp", -- Python LSP server (fast and modern)
 
         -- install formatters
         "stylua",
         "pint",
         "phpstan",
         "biome",
+        "ruff", -- Python formatter and linter (all-in-one)
 
         -- install debuggers
-        -- "debugpy",
+        "debugpy", -- Python debugger
 
         -- install any other package
         "tree-sitter-cli",

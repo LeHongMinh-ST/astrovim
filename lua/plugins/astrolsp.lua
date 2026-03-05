@@ -28,9 +28,9 @@ return {
           "js",
           "tsx",
           "jsx",
+          "python", -- enable format on save for Python
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
-          -- "python",
         },
       },
       disabled = { -- disable formatting capabilities for the listed language servers
@@ -44,11 +44,11 @@ return {
     },
     -- enable servers that you already have installed without mason
     servers = {
-      -- "pyright"
       "lua_ls", -- Lua LSP
       "intelephense", -- PHP LSP
       "vtsls", -- TS/JS LSP
       "basedpyright", -- Python LSP
+      "ruff", -- Python LSP (ruff-lsp)
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
